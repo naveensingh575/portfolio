@@ -208,7 +208,7 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
             <div className="flex justify-between items-center">
               <span className="text-[var(--c-muted)]">response:</span>
-              <span className="text-[var(--c-accent)] font-semibold">&lt; 12h</span>
+              <span className="text-[var(--c-accent)] font-semibold">&lt; 24h</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-[var(--c-muted)]">sla:</span>

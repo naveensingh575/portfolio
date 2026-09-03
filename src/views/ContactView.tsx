@@ -213,7 +213,7 @@ export const ContactView: React.FC = () => {
               <CheckCircle className="w-12 h-12 text-emerald-500 mx-auto" />
               <h4 className="text-lg font-bold text-[var(--c-heading)] font-sans">Message Dispatched Successfully!</h4>
               <p className="text-xs sm:text-sm text-[var(--c-muted)] font-sans max-w-md mx-auto">
-                Thank you for reaching out! Your message has been received securely. I will review your note and respond within 12 hours.
+                Thank you for reaching out! Your message has been received securely. I will review your note and respond within 24 hours.
               </p>
               <button
                 onClick={() => setSent(false)}
@@ -335,7 +335,7 @@ export const ContactView: React.FC = () => {
                 <ShieldCheck className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
                 <div>
                   <div className="text-[var(--c-heading)] font-bold font-sans">Response SLA</div>
-                  <div className="text-[var(--c-muted)] text-[11px]">Under 12 Hours on Business Days</div>
+                  <div className="text-[var(--c-muted)] text-[11px]">Under 24 Hours on Business Days</div>
                 </div>
               </div>
             </div>

@@ -51,7 +51,7 @@ export const PORTFOLIO_DATA = {
     status: "Available for High-Impact Roles & Consulting",
     location: "Gurugram / New Delhi, India",
     timezone: "GMT+5:30 (IST)",
-    responseUptime: "< 12 hours",
+    responseUptime: "< 24 hours",
     sla: "99.9% SLA",
     email: "navisingh2100@gmail.com",
     phone: "+91 7229960539",

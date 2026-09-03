@@ -121,7 +121,7 @@ SUMMARY: ${PORTFOLIO_DATA.profile.summary}`
     } else if (cmd === 'status' || cmd === 'ping' || cmd === 'uptime') {
       newOutputs.push({
         type: 'success',
-        text: `[STATUS: HEALTHY] Uptime: 99.9% SLA | Region: AWS ap-south-1 | Latency: 14ms | Response SLA: <12h`
+        text: `[STATUS: HEALTHY] Uptime: 99.9% SLA | Region: AWS ap-south-1 | Latency: 14ms | Response SLA: <24h`
       });
     } else if (cmd.startsWith('sudo hire') || cmd === 'hire' || cmd === 'hire naveen') {
       newOutputs.push({
