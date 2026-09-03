@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { 
   FileDown, 
@@ -22,22 +22,52 @@ interface HeaderProps {
   setIsDark: (dark: boolean) => void;
 }
 
+// Typewriter hook — types out each role char by char, pauses, deletes, then moves to next
+function useTypewriter(words: string[], typingSpeed = 70, deletingSpeed = 40, pause = 1800) {
+  const [displayed, setDisplayed] = useState('');
+  const [wordIdx, setWordIdx] = useState(0);
+  const [phase, setPhase] = useState<'typing' | 'pausing' | 'deleting'>('typing');
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    const current = words[wordIdx % words.length];
+
+    if (phase === 'typing') {
+      if (displayed.length < current.length) {
+        timeoutRef.current = setTimeout(() => {
+          setDisplayed(current.slice(0, displayed.length + 1));
+        }, typingSpeed);
+      } else {
+        timeoutRef.current = setTimeout(() => setPhase('pausing'), pause);
+      }
+    } else if (phase === 'pausing') {
+      timeoutRef.current = setTimeout(() => setPhase('deleting'), 300);
+    } else if (phase === 'deleting') {
+      if (displayed.length > 0) {
+        timeoutRef.current = setTimeout(() => {
+          setDisplayed(displayed.slice(0, -1));
+        }, deletingSpeed);
+      } else {
+        setWordIdx((prev) => (prev + 1) % words.length);
+        setPhase('typing');
+      }
+    }
+
+    return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); };
+  }, [displayed, phase, wordIdx, words, typingSpeed, deletingSpeed, pause]);
+
+  return displayed;
+}
+
 export const Header: React.FC<HeaderProps> = ({ 
   onOpenResumeModal, 
   isDark, 
   setIsDark 
 }) => {
-  const [roleIndex, setRoleIndex] = useState(0);
+  const typedRole = useTypewriter(PORTFOLIO_DATA.profile.roles, 65, 35, 1800);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
   const [isCVMenuOpen, setIsCVMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRoleIndex((prev) => (prev + 1) % PORTFOLIO_DATA.profile.roles.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(PORTFOLIO_DATA.profile.email);
@@ -55,6 +85,32 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className="box w-full p-5 sm:p-7 relative overflow-hidden transition-all duration-300">
       
+      {/* Subtle floating particle dots */}
+      {[
+        { size: 3, left: '8%',  delay: '0s',   dur: '6s'  },
+        { size: 2, left: '18%', delay: '1.2s', dur: '8s'  },
+        { size: 4, left: '32%', delay: '0.5s', dur: '7s'  },
+        { size: 2, left: '50%', delay: '2s',   dur: '9s'  },
+        { size: 3, left: '65%', delay: '0.8s', dur: '6.5s'},
+        { size: 2, left: '78%', delay: '1.8s', dur: '8.5s'},
+        { size: 4, left: '90%', delay: '0.3s', dur: '7.5s'},
+        { size: 2, left: '42%', delay: '3s',   dur: '10s' },
+      ].map((p, i) => (
+        <span
+          key={i}
+          className="particle"
+          style={{
+            width: p.size,
+            height: p.size,
+            left: p.left,
+            bottom: '10%',
+            animationDelay: p.delay,
+            animationDuration: p.dur,
+            opacity: 0,
+          }}
+        />
+      ))}
+
       {/* Top Chrome Bar */}
       <div className="flex items-center justify-between border-b border-[var(--c-border)] pb-3.5 mb-6 font-mono text-[11px] text-[var(--c-muted)]">
         <div className="flex items-center space-x-2">
@@ -119,14 +175,12 @@ export const Header: React.FC<HeaderProps> = ({
               </h1>
             </div>
 
-            {/* Dynamic Smooth Cross-fade Role */}
+            {/* Typewriter Role */}
             <div className="h-6 mt-1 flex items-center justify-center sm:justify-start overflow-hidden">
-              <div 
-                key={roleIndex}
-                className="text-xs sm:text-sm font-medium text-[var(--c-accent)] font-mono tracking-tight animate-fade-in-up flex items-center gap-1.5"
-              >
+              <div className="text-xs sm:text-sm font-medium text-[var(--c-accent)] font-mono tracking-tight flex items-center gap-1.5">
                 <span className="text-[var(--c-muted)]">&gt;</span>
-                <span>{PORTFOLIO_DATA.profile.roles[roleIndex]}</span>
+                <span>{typedRole}</span>
+                <span className="inline-block w-[2px] h-[1em] bg-[var(--c-accent)] ml-0.5 align-middle animate-[blink_1s_step-end_infinite]" />
               </div>
             </div>
 
