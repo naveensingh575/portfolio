@@ -15,7 +15,7 @@ export function App() {
   const [activeView, setActiveView] = useState<string>('about');
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [isResumeModalOpen, setIsResumeModalOpen] = useState<boolean>(false);
-  const [isDark, setIsDark] = useState<boolean>(true);
+  const [isDark, setIsDark] = useState<boolean>(false);
 
   // Sync dark class on root html
   useEffect(() => {
