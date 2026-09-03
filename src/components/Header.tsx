@@ -93,13 +93,12 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Avatar Frame */}
           <div className="relative flex-shrink-0 group">
             <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl p-[2px] bg-gradient-to-tr from-[var(--c-accent)] via-indigo-500 to-emerald-400 shadow-xl shadow-[var(--c-accent)]/10 group-hover:shadow-[var(--c-accent)]/25 transition-all">
-              <div className="w-full h-full bg-[var(--c-surface)] rounded-2xl flex flex-col items-center justify-center font-mono relative overflow-hidden">
-                <span className="text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[var(--c-accent)] to-indigo-400">
-                  NK
-                </span>
-                <span className="text-[9px] text-[var(--c-muted)] tracking-widest uppercase font-bold mt-0.5">
-                  DEV//OPS
-                </span>
+              <div className="w-full h-full rounded-2xl overflow-hidden">
+                <img
+                  src="/naveen-avatar.jpg"
+                  alt="Naveen Kumar"
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
             </div>
             
