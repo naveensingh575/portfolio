@@ -24,7 +24,7 @@ export const PortfolioView: React.FC = () => {
     { name: 'DevOps & Cloud', count: PORTFOLIO_DATA.projects.filter(p => p.category === 'DevOps & Cloud').length, icon: Cpu },
     { name: 'Audio & Media', count: PORTFOLIO_DATA.projects.filter(p => p.category === 'Audio & Media').length, icon: Radio },
     { name: 'Web Platform', count: PORTFOLIO_DATA.projects.filter(p => p.category === 'Web Platform').length, icon: Globe },
-  ];
+  ].filter(cat => cat.count > 0);
 
   const filteredProjects = selectedCategory === 'All'
     ? PORTFOLIO_DATA.projects

@@ -68,7 +68,7 @@ SUMMARY: ${PORTFOLIO_DATA.profile.summary}`
    └─ ${PORTFOLIO_DATA.projects[3].tagline}
 5. [Hanuman Chalisa]  : ${PORTFOLIO_DATA.projects[4].demoUrl}
    └─ ${PORTFOLIO_DATA.projects[4].tagline}
-6. [AWS CI/CD Infra]  : ${PORTFOLIO_DATA.projects[5].demoUrl}
+6. [GrocerySync App]  : ${PORTFOLIO_DATA.projects[5].demoUrl}
    └─ ${PORTFOLIO_DATA.projects[5].tagline}`
       });
     } else if (cmd === 'skills') {

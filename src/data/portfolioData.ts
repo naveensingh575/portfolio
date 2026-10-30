@@ -197,28 +197,28 @@ export const PORTFOLIO_DATA = {
       ]
     },
     {
-      id: "aws-enterprise-cicd",
-      title: "AWS DevOps CI/CD & Terraform Pipeline",
-      tagline: "Automated end-to-end Jenkins, Docker, ECR, & AWS Terraform infrastructure",
-      category: "DevOps & Cloud",
-      description: "Production-grade automated CI/CD pipeline and IaC provisioning for containerized applications on AWS EC2, ECR, and CloudWatch.",
-      longDescription: "Architected and implemented a complete GitOps CI/CD delivery pipeline for containerized microservices. Utilizes Jenkins and GitLab CI for automated test/build, pushes immutable Docker images to AWS ECR, orchestrates Terraform infrastructure provisioning, and manages multi-tier cloud deployments.",
+      id: "grocerysync",
+      title: "GrocerySync Platform",
+      tagline: "Real-time shared grocery list & quick delivery coordination for flatmates & groups",
+      category: "Full-Stack SaaS",
+      description: "Collaborative real-time shared grocery management application designed for groups, flatmates, and families coordinating orders across Blinkit, Zepto, and Instamart.",
+      longDescription: "GrocerySync is a modern full-stack progressive web application that streamlines collaborative grocery ordering. Featuring real-time list synchronization with Supabase WebSockets, item categorization, group-based flatmate workspaces, optimistic UI state updates, and push notifications.",
       architectureNotes: [
-        "Infrastructure as Code (IaC) modularized with Terraform across VPC, Security Groups, EKS, and EC2",
-        "Immutable Docker build workflow with versioned tags for instant rollbacks",
-        "Automated deployment via Jenkins & GitLab CI with zero manual intervention",
-        "Datadog, CloudWatch, and Splunk integrations for automated health telemetry"
+        "Real-time bidirectional synchronization powered by Supabase PostgreSQL WebSockets",
+        "Row-Level Security (RLS) policies guaranteeing strict multi-tenant isolation per workspace",
+        "Zustand state architecture with optimistic local mutations for instantaneous offline-first response",
+        "Mobile-first PWA architecture with Web Push API integration and installable homescreen support"
       ],
-      techStack: ["AWS (EKS, EC2, ECR, IAM, VPC)", "Terraform", "Docker", "Jenkins", "GitLab CI", "Ansible", "CloudWatch", "Python"],
-      demoUrl: "https://github.com/naveensingh575",
-      githubUrl: "https://github.com/naveensingh575",
+      techStack: ["Next.js 16", "TypeScript", "Tailwind CSS v4", "Supabase", "PostgreSQL", "Zustand", "Framer Motion", "Vercel"],
+      demoUrl: "https://grocerysync.vercel.app/login",
+      githubUrl: "https://github.com/naveensingh575/flatsync",
       featured: true,
-      status: "Continuous CI/CD",
-      gradient: "from-blue-600/20 via-cyan-600/10 to-transparent",
-      accentColor: "#38bdf8",
+      status: "Live Production",
+      gradient: "from-emerald-500/20 via-teal-600/10 to-transparent",
+      accentColor: "#10b981",
       metrics: [
-        { label: "Deploy Stability", value: "+30%" },
-        { label: "SLA Compliance", value: "99.9%" }
+        { label: "Realtime Latency", value: "< 40ms" },
+        { label: "Database", value: "Supabase RLS" }
       ]
     }
   ] as Project[],
